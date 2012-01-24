@@ -5,10 +5,12 @@
  * 同じようにして、1,000 未満の 3 か 5 の倍数になっている数字の合計を求めよ。
  */
 
-var sum = 0;
-for (var i = 1; i < 1000; i++ ) {
+var total = 0;
+
+for (var i = 0; i < 1000; i++ ) {
     if (i % 3 == 0 || i % 5 == 0) {
-        sum += i;
+        total += i;
     }
 }
-console.log(sum);
+
+console.log(total);
