@@ -6,6 +6,8 @@
  * 数列の項の値が400万を超えない範囲で、偶数値の項の総和を求めよ。
  */
 
+var start = new Date();
+
 function mkfib (limit) {
     var x = 0;
     var y = 1;
@@ -21,12 +23,13 @@ function mkfib (limit) {
 }
 
 var total = 0;
-var fibonacci = mkfib(4000000);
+var evenfib = mkfib(4000000).filter(function(n) { return n % 2 == 0 } );
 
-for (var i = 0; i < fibonacci.length; i++) {
-    if (fibonacci[i] % 2 == 0) {
-        total += fibonacci[i];
-    }
+for (var i = 0; i < evenfib.length; i++) {
+    total += evenfib[i];
 }
 
 console.log(total);
+
+var end = new Date();
+console.log('execution time ' + (end - start) / 1000 + ' sec');
