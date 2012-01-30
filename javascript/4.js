@@ -5,7 +5,7 @@
  * では、3桁の数の積で表される回文数のうち最大のものはいくらになるか。
  */
 
-var start = new Date();
+console.time('execution');
 
 function maxPalindromic(n) {
     var result = 0;
@@ -39,6 +39,4 @@ function isPalindromic(n) {
 }
 
 console.log(maxPalindromic(3));
-
-var end = new Date();
-console.log('execution time ' + (end - start) / 1000 + ' sec');
+console.timeEnd('execution');

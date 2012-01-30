@@ -5,21 +5,18 @@
  * 600851475143 の素因数のうち最大のものを求めよ。
  */
 
-var start = new Date();
+console.time('execution');
 
-var n = 600851475143;
-var division = 2;
-
-while (division * division <= n) {
-    if (n % division == 0) {
-        n /= division;
-    } else {
-        division++;
+function getMaxPrime(n, division) {
+    while (division * division <= n) {
+        if (n % division == 0) {
+            n /= division;
+        } else {
+            division++;
+        }
     }
+    return n;
 }
 
-var maxPrime = n;
-console.log(maxPrime);
-
-var end = new Date();
-console.log('execution time ' + (end - start) / 1000 + ' sec');
+console.log(getMaxPrime(600851475143, 2));
+console.timeEnd('execution');

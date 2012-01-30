@@ -5,9 +5,25 @@
  * では、1 から 20 までの整数全てで割り切れる数字の中で最小の値はいくらになるか。
  */
 
-var start = new Date();
+console.time('execution');
 
-console.log(0);
+function gcd(x, y) {
+    if (y == 0) {
+        return x;
+    }
+    return gcd(y, x % y);
+}
 
-var end = new Date();
-console.log('execution time ' + (end - start) / 1000 + ' sec');
+function lcm(x, y) {
+    return x * y / gcd(x, y);
+}
+
+function getLcmTo(n) {
+    var result = 1;
+    for (var i = 2; i <= n; i++) {
+        result = lcm(result, i);
+    }
+    return result;
+}
+console.log(getLcmTo(20));
+console.timeEnd('execution');

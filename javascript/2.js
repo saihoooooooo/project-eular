@@ -6,7 +6,7 @@
  * 数列の項の値が400万を超えない範囲で、偶数値の項の総和を求めよ。
  */
 
-var start = new Date();
+console.time('execution');
 
 function mkfib (limit) {
     var x = 0;
@@ -30,6 +30,4 @@ for (var i = 0; i < evenfib.length; i++) {
 }
 
 console.log(total);
-
-var end = new Date();
-console.log('execution time ' + (end - start) / 1000 + ' sec');
+console.timeEnd('execution');

@@ -5,7 +5,7 @@
  * 同じようにして、1,000 未満の 3 か 5 の倍数になっている数字の合計を求めよ。
  */
 
-var start = new Date();
+console.time('execution');
 
 var total = 0;
 
@@ -18,4 +18,4 @@ for (var i = 0; i < 1000; i++ ) {
 console.log(total);
 
 var end = new Date();
-console.log('execution time ' + (end - start) / 1000 + ' sec');
+console.timeEnd('execution');
