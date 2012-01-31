@@ -25,5 +25,6 @@ function getLcmTo(n) {
     }
     return result;
 }
+
 console.log(getLcmTo(20));
 console.timeEnd('execution');
