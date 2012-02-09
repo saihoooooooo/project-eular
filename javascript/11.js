@@ -52,55 +52,37 @@ function ArrayProduct() {
         [01, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 01, 89, 19, 67, 48]
     ];
 
-    this.tate = function(x, y) {
-        var product = 1;
+    this.product = function(x, y, type) {
+        var result = 1;
+        var x2, y2;
         for (var i = 0; i < 4; i++) {
-            if (typeof(this.arr[y + i]) === 'undefined' || typeof(this.arr[y + i][x]) === 'undefined') {
+            switch (type) {
+            case 'tate':
+                x2 = x;
+                y2 = y + i;
+                break;
+            case 'yoko':
+                x2 = x + i;
+                y2 = y;
+                break;
+            case 'uenaname':
+                x2 = x + i;
+                y2 = y - i;
+                break;
+            case 'shitananame':
+                x2 = x + i;
+                y2 = y + i;
+                break;
+            default:
                 return;
             }
-            product *= this.arr[y + i][x];
-        }
-        if (this.maxProduct < product) {
-            this.maxProduct = product;
-        }
-    }
-
-    this.yoko = function(x, y) {
-        var product = 1;
-        for (var i = 0; i < 4; i++) {
-            if (typeof(this.arr[y]) === 'undefined' || typeof(this.arr[y][x + i]) === 'undefined') {
+            if (typeof(this.arr[y2]) === 'undefined' || typeof(this.arr[y2][x2]) === 'undefined') {
                 return;
             }
-            product *= this.arr[y][x + i];
+            result *= this.arr[y2][x2];
         }
-        if (this.maxProduct < product) {
-            this.maxProduct = product;
-        }
-    }
-
-    this.uenaname = function(x, y) {
-        var product = 1;
-        for (var i = 0; i < 4; i++) {
-            if (typeof(this.arr[y - i]) === 'undefined' || typeof(this.arr[y - i][x + i]) === 'undefined') {
-                return;
-            }
-            product *= this.arr[y - i][x + i];
-        }
-        if (this.maxProduct < product) {
-            this.maxProduct = product;
-        }
-    }
-
-    this.shitananame = function(x, y) {
-        var product = 1;
-        for (var i = 0; i < 4; i++) {
-            if (typeof(this.arr[y + i]) === 'undefined' || typeof(this.arr[y + i][x + i]) === 'undefined') {
-                return;
-            }
-            product *= this.arr[y + i][x + i];
-        }
-        if (this.maxProduct < product) {
-            this.maxProduct = product;
+        if (this.maxProduct < result) {
+            this.maxProduct = result;
         }
     }
 }
@@ -109,10 +91,10 @@ var arrayProduct = new ArrayProduct();
 
 for (var v = 0; v < 20; v++) {
     for (var h = 0; h < 20; h++) {
-        arrayProduct.tate(v, h);
-        arrayProduct.yoko(v, h);
-        arrayProduct.uenaname(v, h);
-        arrayProduct.shitananame(v, h);
+        arrayProduct.product(v, h, 'tate');
+        arrayProduct.product(v, h, 'yoko');
+        arrayProduct.product(v, h, 'uenaname');
+        arrayProduct.product(v, h, 'shitananame');
     }
 }
 
