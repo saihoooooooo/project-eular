@@ -52,7 +52,6 @@ var arr = [
 
 var arrayProduct = (function () {
     var maxProduct = 0;
-
     var getArrayIndex = function(x, y) {
         if (typeof(arr[y]) === 'undefined' || typeof(arr[y][x]) === 'undefined') {
             return 0;
@@ -72,15 +71,10 @@ var arrayProduct = (function () {
                 uenaname *= getArrayIndex(x - i, y + i);
                 shitananame *= getArrayIndex(x + i, y + i);
             }
-            if (maxProduct < tate) {
-                maxProduct = tate;
-            } else if (maxProduct < yoko) {
-                maxProduct = yoko;
-            } else if (maxProduct < uenaname) {
-                maxProduct = uenaname;
-            } else if (maxProduct < shitananame) {
-                maxProduct = shitananame;
-            }
+            if (maxProduct < tate) maxProduct = tate;
+            if (maxProduct < yoko) maxProduct = yoko;
+            if (maxProduct < uenaname) maxProduct = uenaname;
+            if (maxProduct < shitananame) maxProduct = shitananame;
         },
         getMaxProduct : function() {
             return maxProduct;
@@ -88,11 +82,7 @@ var arrayProduct = (function () {
     };
 })();
 
-for (var x = 0; x < 20; x++) {
-    for (var y = 0; y < 20; y++) {
-        arrayProduct.product(x, y);
-    }
-}
+for (var x = 0; x < 20; x++) for (var y = 0; y < 20; y++) arrayProduct.product(x, y);
 
 console.log(arrayProduct.getMaxProduct());
 console.timeEnd('execution');
