@@ -43,8 +43,7 @@ var getDivisorNum = function(n) {
 
 var triangle = 1;
 var next = 1;
-var divisorNum;
-while(divisorNum = getDivisorNum(triangle) < 501) {
+while(getDivisorNum(triangle) < 501) {
     triangle += ++next;
 }
 
