@@ -18,5 +18,4 @@ do
 done
 
 echo "$sum"
-
 exit 0
